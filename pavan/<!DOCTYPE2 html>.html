@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineVerse - Explore the World of Movies</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0f0f0f;
+            color: #ffffff;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 90%;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ff4d4d;
+        }
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #ff4d4d;
+        }
+        .country-dropdown {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            margin-left: 15px;
+        }
+        .container {
+            text-align: center;
+            margin-top: 150px;
+            color: #ff0040;
+        }
+        .container h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .hero {
+            height: 70vh;
+            background: url('/api/placeholder/1600/900') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero-content {
+            z-index: 1;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .cta-button {
+            background-color: #ff4d4d;
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #ff3333;
+        }
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 4rem 5%;
+        }
+        .movie-card {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .movie-card:hover {
+            transform: translateY(-10px);
+        }
+        .movie-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .movie-info {
+            padding: 1rem;
+        }
+        .movie-title {
+            font-weight: 600;
+            margin: 0 0 0.5rem 0;
+        }
+        .movie-year {
+            color: #999;
+        }
+        footer {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem;
+        }
+        .login-btn {
+            background-color: #ff4d4d;
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left: 1.5rem;
+        }
+        .login-btn:hover {
+            background-color: #ff3333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">CineVerse</div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <select class="country-dropdown">
+                        <option value="">Select Country</option>
+                        <option value="usa">USA</option>
+                        <option value="canada">Canada</option>
+                        <option value="india">India</option>
+                        <option value="china">China</option>
+                        <option value="korea">Korea</option>
+                    </select>
+                    <li><a href="#">Movies</a></li>
+                    <li><a href="#">TV Shows</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+                <button class="login-btn">Login</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to CineVerse</h1>
+            <p>Discover and explore the best in cinema</p>
+            <button class="cta-button">Explore Now</button>
+        </div>
+    </section>
+
+    <main class="movie-grid">
+        <div class="movie-card">
+            <img src="/api/placeholder/300/450" alt="Movie 1">
+            <div class="movie-info">
+                <p class="movie-title">Inception</p>
+                <p class="movie-year">2010</p>
+            </div>
+        </div>
+        <div class="movie-card">
+            <img src="/api/placeholder/300/450" alt="Movie 2">
+            <div class="movie-info">
+                <p class="movie-title">The Shawshank Redemption</p>
+                <p class="movie-year">1994</p>
+            </div>
+        </div>
+        <div class="movie-card">
+            <img src="/api/placeholder/300/450" alt="Movie 3">
+            <div class="movie-info">
+                <p class="movie-title">Pulp Fiction</p>
+                <p class="movie-year">1994</p>
+            </div>
+        </div>
+        <div class="movie-card">
+            <img src="/api/placeholder/300/450" alt="Movie 4">
+            <div class="movie-info">
+                <p class="movie-title">The Dark Knight</p>
+                <p class="movie-year">2008</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 CineVerse. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search - YesMovies Style</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff0040;
+        }
+        .login {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .login button {
+            background-color: #ff0040;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login button:hover {
+            background-color: #e60038;
+        }
+        header nav {
+            display: flex;
+            align-items: center;
+        }
+        header nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        .country-dropdown {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            margin-left: 15px;
+        }
+        .container {
+            text-align: center;
+            margin-top: 150px;
+            color: #ff0040;
+        }
+        .container h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .search-bar {
+            display: inline-flex;
+            width: 600px;
+            border: 1px solid #ff0040; /* Border for the search bar container */
+            border-radius: 5px; /* Rounded corners for the container */
+            overflow: hidden; /* Ensures child elements fit within the rounded corners */
+        }
+
+        .search-bar input {
+            flex-grow: 1;
+            width: 500px;
+            padding: 15px;
+            font-size: 16px;
+            border: none; /* No border for the input field */
+            outline: none; /* Removes the outline when focused */
+            border-radius: 5px 0 0 5px; /* Rounded corners for the input */
+        }
+
+        .search-bar button {
+            padding: 15px;
+            border: none; /* No border for the button */
+            background-color: #ff0040;
+            color: white;
+            font-size: 16px;
+            border-radius: 0 5px 5px 0; /* Rounded corners for the button */
+            cursor: pointer;
+        }
+
+        /* Flexbox for Movie Icons */
+        .movie-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        /* Box styling for each movie icon */
+        .movie-icon {
+            margin: 10px; /* Existing margin */
+            margin-top: 10%; /* Existing top margin */
+            margin-right: 15px; /* Add right margin for horizontal space */
+            margin-bottom: 15px; /* Add bottom margin for vertical space */
+            font-size: 24px;
+            color: #ff0040;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            border: 1px solid #ff0040; /* Border color matching the text */
+            border-radius: 10px; /* Rounded corners */
+            width: 150px;
+            text-align: center;
+            transition: transform 0.3s; /* Smooth hover effect */
+        }
+        /* Hover effect for movie icons */
+        .movie-icon:hover {
+            transform: scale(1.1);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .cta-button {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #ff0040;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+        .cta-button:hover {
+            background-color: #e60038;
+        }
+        .about {
+            margin-top: 200px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .about h2, .about p {
+            text-align: left;
+            margin: 0 auto;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with Navigation, Logo, and Login -->
+    <header>
+        <div class="logo">Wewatch</div>
+        <nav>
+            <a href="#">Home</a>
+            <div>
+                <select class="country-dropdown">
+                    <option value="">Select Country</option>
+                    <option value="usa">USA</option>
+                    <option value="canada">Canada</option>
+                    <option value="india">India</option>
+                    <option value="china">China</option>
+                    <option value="korea">Korea</option>
+                </select>
+            </div>
+            <a href="#">Movies</a>
+            <a href="#">TV Series</a>
+            <a href="#">Cartoon</a>
+            <a href="#">Popular Movies</a>
+            <a href="#">Mylist</a>
+            <a href="#">History</a>
+            <a href="#">History</a>
+        </nav>
+        <div class="login">
+            <button>Login</button>
+        </div>
+    </header>
+
+    <!-- Search Bar Section -->
+    <div class="container">
+        <h1>Movies & TV Shows</h1>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button><i class="fas fa-search"></i> Ai</button>
+        </div>
+    </div>
+
+    <!-- Movie Icons Section -->
+    <div class="movie-icons">
+        <div class="movie-icon"><i class="fas fa-film"></i> Movie 1</div>
+        <div class="movie-icon"><i class="fas fa-film"></i> Movie 2</div>
+        <div class="movie-icon"><i class="fas fa-film"></i> Movie 3</div>
+        <div class="movie-icon"><i class="fas fa-film"></i> Movie 4</div>
+        <div class="movie-icon"><i class="fas fa-film"></i> Movie 5</div>
+    </div>
+
+    <!-- About Section -->
+    <div class="about">
+        <h2>About Movies</h2>
+        <p>Movies enable you to find and explore your preferred films and television shows without any hassle. You may easily locate all the information about any movie or TV show like IMDb score, actors, opinions, and study its synopsis. This free film app provides you with an advanced seek option to discover something you need.</p>
+        
+        <h2>Why use Movies?</h2>
+        <p>Movies is an internet site that is permitting users to find all the first-rate English films and television series free in HD quality. Users can discover first-class movies and TV series according to the style and international locations.</p>
+    </div>
+
+</body>
+</html>

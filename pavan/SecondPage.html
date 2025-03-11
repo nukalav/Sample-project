@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search - YesMovies Style</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1a4a9f 0%, #063970 50%, #022140 100%);
+            color: white;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(2, 33, 64, 0.8);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #4da8da;
+        }
+        .login {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .login button {
+            background-color: #4da8da;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .login button:hover {
+            background-color: #2d93c9;
+        }
+        header nav {
+            display: flex;
+            align-items: center;
+        }
+        header nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        .country-dropdown {
+            background: rgba(2, 33, 64, 0.8);
+            color: white;
+            border: 2px solid #4da8da;
+            border-radius: 8px;
+            padding: 12px 35px 12px 15px;
+            font-size: 16px;
+            margin-left: 15px;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234da8da' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .country-dropdown:hover {
+            background-color: rgba(77, 168, 218, 0.1);
+            border-color: #6ab7e0;
+        }
+        .country-dropdown:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(77, 168, 218, 0.3);
+        }
+        .country-dropdown option {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 12px;
+        }
+        .container {
+            text-align: center;
+            margin-top: 150px;
+            color: #4da8da;
+        }
+        .container h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .search-bar {
+            display: inline-flex;
+            width: 600px;
+            border: 1px solid #4da8da;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(77, 168, 218, 0.2);
+        }
+        .search-bar input {
+            flex-grow: 1;
+            width: 500px;
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            outline: none;
+            border-radius: 5px 0 0 5px;
+        }
+        .search-bar button {
+            padding: 15px;
+            border: none;
+            background-color: #4da8da;
+            color: white;
+            font-size: 16px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .search-bar button:hover {
+            background-color: #2d93c9;
+        }
+        .movie-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 80px;
+            perspective: 1000px;
+        }
+        .movie-icon {
+            margin: 8px;
+            margin-top: 40px;
+            margin-right: 12px;
+            margin-bottom: 12px;
+            font-size: 20px;
+            color: #4da8da;
+            padding: 0;
+            background-color: rgba(2, 33, 64, 0.6);
+            border: 1px solid #4da8da;
+            border-radius: 8px;
+            width: 200px;
+            height: 320px;
+            text-align: center;
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(77, 168, 218, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        .movie-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+            backface-visibility: hidden;
+        }
+        .movie-icon .movie-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background: linear-gradient(to top, rgba(2, 33, 64, 0.95), transparent);
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+            backface-visibility: hidden;
+        }
+        .movie-icon .movie-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+        .movie-icon .movie-rating {
+            font-size: 14px;
+            color: #4da8da;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+        .movie-icon .movie-rating .stars {
+            display: flex;
+            gap: 2px;
+        }
+        .movie-icon .movie-rating .star {
+            color: #ffd700;
+            font-size: 16px;
+        }
+        .movie-icon .movie-rating .star.empty {
+            color: rgba(255, 215, 0, 0.3);
+        }
+        .movie-icon .movie-rating .star.half {
+            position: relative;
+            color: rgba(255, 215, 0, 0.3);
+        }
+        .movie-icon .movie-rating .star.half::before {
+            content: '★';
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+            width: 50%;
+            overflow: hidden;
+        }
+        .movie-icon::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                105deg,
+                transparent 40%,
+                rgba(77, 168, 218, 0.1) 45%,
+                rgba(77, 168, 218, 0.2) 50%,
+                rgba(77, 168, 218, 0.1) 55%,
+                transparent 60%
+            );
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+        .movie-icon:hover {
+            transform: rotateY(15deg) scale(1.05);
+            box-shadow: 
+                -20px 20px 30px rgba(77, 168, 218, 0.2),
+                0 0 20px rgba(77, 168, 218, 0.3);
+        }
+        .movie-icon:hover::after {
+            transform: translateX(100%);
+        }
+        .movie-icon:hover .movie-info {
+            transform: translateY(0) translateZ(20px);
+        }
+        .movie-icon:hover img {
+            transform: scale(1.1) translateZ(10px);
+            filter: brightness(1.1);
+        }
+        .about {
+            margin-top: 200px;
+            padding: 20px;
+            background-color: rgba(2, 33, 64, 0.8);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(77, 168, 218, 0.3);
+        }
+        .about h2, .about p {
+            text-align: left;
+            margin: 0 auto;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Wewatch</div>
+        <nav>
+            <a href="#">Home</a>
+            <div>
+                <select class="country-dropdown">
+                    <option value="" disabled selected>Select Country</option>
+                    <option value="usa">🇺🇸 United States</option>
+                    <option value="canada">🇨🇦 Canada</option>
+                    <option value="uk">🇬🇧 United Kingdom</option>
+                    <option value="india">🇮🇳 India</option>
+                    <option value="china">🇨🇳 China</option>
+                    <option value="korea">🇰🇷 South Korea</option>
+                    <option value="japan">🇯🇵 Japan</option>
+                    <option value="france">🇫🇷 France</option>
+                    <option value="germany">🇩🇪 Germany</option>
+                    <option value="australia">🇦🇺 Australia</option>
+                </select>
+            </div>
+            <a href="#">Movies</a>
+            <a href="#">TV Series</a>
+            <a href="#">Cartoon</a>
+            <a href="#">Popular Movies</a>
+            <a href="#">Mylist</a>
+            <a href="#">History</a>
+        </nav>
+        <div class="login">
+            <button>Login</button>
+        </div>
+    </header>
+
+    <div class="movie-icons">
+        <div class="movie-icon">
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS2lgOC4q6fJzo_DnXY0Jgho2e3_5jfzlmJvRb55FPzz_pJ9jc_" alt="Hanu Man">
+            <div class="movie-info">
+                <div class="movie-title">HanuMan</div>
+                <div class="movie-rating">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star empty">★</span>
+                    </div>
+                    8.4/10
+                </div>
+            </div>
+        </div>
+        <div class="movie-icon">
+            <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/kalki-2898-ad-et00311673-1704954533.jpg" alt="Kalki">
+            <div class="movie-info">
+                <div class="movie-title">Kalki 2898 AD</div>
+                <div class="movie-rating">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star half">★</span>
+                    </div>
+                    9.0/10
+                </div>
+            </div>
+        </div>
+        <div class="movie-icon">
+            <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/pushpa--the-rule-part-2-et00301886-1702971289.jpg" alt="Pushpa 2">
+            <div class="movie-info">
+                <div class="movie-title">Pushpa 2: The Rule</div>
+                <div class="movie-rating">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star half">★</span>
+                    </div>
+                    8.8/10
+                </div>
+            </div>
+        </div>
+        <div class="movie-icon">
+            <img src="https://m.media-amazon.com/images/M/MV5BODUwNDNjYzctODUxNy00ZTA2LWIyYTEtMDc5Y2E5ZjBmNTMzXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_.jpg" alt="RRR">
+            <div class="movie-info">
+                <div class="movie-title">RRR</div>
+                <div class="movie-rating">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    9.5/10
+                </div>
+            </div>
+        </div>
+        <div class="movie-icon">
+            <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/devara-part-1-et00311673-1704954533.jpg" alt="Devara">
+            <div class="movie-info">
+                <div class="movie-title">Devara: Part 1</div>
+                <div class="movie-rating">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star half">★</span>
+                    </div>
+                    8.7/10
+                </div>
+            </div>
+        </div>
+        <div class="movie-icon">
+            <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/lucky-baskhar-et00311673-1704954533.jpg" alt="Lucky Baskhar">
+            <div class="movie-info">
+                <div class="movie-title">Lucky Baskhar</div>
+                <div class="movie-rating">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star empty">★</span>
+                    </div>
+                    8.2/10
+                </div>
+            </div>
+        </div>
+        <div class="movie-icon">
+            <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/tillu-square-et00311673-1704954533.jpg" alt="Tillu Square">
+            <div class="movie-info">
+                <div class="movie-title">Tillu Square</div>
+                <div class="movie-rating">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star empty">★</span>
+                    </div>
+                    8.5/10
+                </div>
+            </div>
+        </div>
+        <div class="movie-icon">
+            <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/saripodhaa-sanivaaram-et00311673-1704954533.jpg" alt="Saripodhaa Sanivaaram">
+            <div class="movie-info">
+                <div class="movie-title">Saripodhaa Sanivaaram</div>
+                <div class="movie-rating">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star empty">★</span>
+                    </div>
+                    8.3/10
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about">
+        <h2>About Movies</h2>
+        <p>Movies enable you to find and explore your preferred films and television shows without any hassle. You may easily locate all the information about any movie or TV show like IMDb score, actors, opinions, and study its synopsis. This free film app provides you with an advanced seek option to discover something you need.</p>
+        
+        <h2>Why use Movies?</h2>
+        <p>Movies is an internet site that is permitting users to find all the first-rate English films and television series free in HD quality. Users can discover first-class movies and TV series according to the style and international locations.</p>
+    </div>
+</body>
+</html>       

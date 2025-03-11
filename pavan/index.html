@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spy Movies</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #d0eaff; /* Light blue background */
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      padding: 20px;
+      color: #00509e; /* Dark blue for the header */
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .movie-card {
+      position: relative;
+      text-align: center;
+      background-color: #ffffff; /* White card background */
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .movie-description {
+      position: absolute;
+      top: 100px;
+      left: 10px;
+      right: 10px;
+      background-color: rgba(239, 239, 239, 0.813);
+      color: rgb(1, 1, 15);
+      padding: 10px;
+      border-radius: 8px;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease-in-out;
+      font-size: 14px;
+      display: none;
+    }
+    .movie-card:hover .movie-description {
+      transform: translateY(0);
+      display: block;
+      z-index: 2000 !important;
+    }
+    .movie-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .movie-title {
+      margin: 10px 0;
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+    }
+    .rating {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+    }
+    .rating span {
+      font-size: 20px;
+      cursor: pointer;
+      color: #bbb; /* Default gray stars */
+    }
+    .rating span.selected {
+      color: #ffd700; /* Gold for selected stars */
+    }
+  </style>
+</head>
+<body>
+  <h1></h1>
+  <div class="container">
+    <!-- Spy Movie Cards -->
+    <div class="movie-card">
+      <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS2lgOC4q6fJzo_DnXY0Jgho2e3_5jfzlmJvRb55FPzz_pJ9jc_" alt="Hanu Man">
+      <div class="movie-title">Hanu-Man</div>
+      <div class="rating" data-rating="0">
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+      </div>
+      <div class="movie-description">
+        <p><strong>Director:</strong> Prasanth Varma</p>
+        <p><strong>Screenplay:</strong> Scriptsville</p>
+        <p><strong>Hero:</strong> Teja</p>
+        <p><strong>Language:</strong> Telugu</p>
+        <p><strong>Music:</strong> GowraHari</p>
+      </div>
+    </div>
+    <div class="movie-card">
+      <img src="https://via.placeholder.com/150x200?text=" alt="Kalki 2898 AD">
+      <div class="movie-title">Kalki 2898 AD</div>
+      <div class="rating" data-rating="0">
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+      </div>
+    </div>
+    <div class="movie-card">
+      <img src="https://via.placeholder.com/150x200?text=" alt="">
+      <div class="movie-title">SPushpa 2: The Rule </div>
+      <div class="rating" data-rating="0">
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+      </div>
+    </div>
+    <div class="movie-card">
+      <img src="https://via.placeholder.com/150x200?text=" alt="">
+      <div class="movie-title">RRR</div>
+      <div class="rating" data-rating="0">
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+      </div>
+    </div>
+    <div class="movie-card">
+      <img src="https://via.placeholder.com/150x200?text=" alt="">
+      <div class="movie-title">Devara: Part 1</div>
+      <div class="rating" data-rating="0">
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+      </div>
+    </div>
+    <div class="movie-card">
+      <img src="https://via.placeholder.com/150x200?text=" alt="">
+      <div class="movie-title">Lucky Baskhar</div>
+      <div class="rating" data-rating="0">
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+      </div>
+    </div>
+    <div class="movie-card">
+      <img src="https://via.placeholder.com/150x200?text=" alt="">
+      <div class="movie-title">Tillu Square</div>
+      <div class="rating" data-rating="0">
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+      </div>
+    </div>
+    <div class="movie-card">
+      <img src="https://via.placeholder.com/150x200?text=" alt="">
+      <div class="movie-title">Saripodhaa Sanivaaram</div>
+      <div class="rating" data-rating="0">
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+      </div>
+    </div>
+    <div class="movie-card">
+      <img src="https://via.placeholder.com/150x200?text=" alt="">
+      <div class="movie-title">KA</div>
+      <div class="rating" data-rating="0">
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+      </div>
+    </div>
+    <div class="movie-card">
+      <img src="https://via.placeholder.com/150x200?text=" alt="">
+      <div class="movie-title">My Spy</div>
+      <div class="rating" data-rating="0">
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+      </div>
+    </div>
+    <div class="movie-card">
+      <img src="https://via.placeholder.com/150x200?text=" alt="">
+      <div class="movie-title">Naa Saami Ranga</div>
+      <div class="rating" data-rating="0">
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+      </div>
+    </div>
+    <div class="movie-card">
+      <img src="https://via.placeholder.com/150x200?text=" alt="">
+      <div class="movie-title">Eagle</div>
+      <div class="rating" data-rating="0">
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+      </div>
+    </div>
+    <div class="movie-card">
+      <img src="https://via.placeholder.com/150x200?text=" alt="">
+      <div class="movie-title">Guntur Kaaram</div>
+      <div class="rating" data-rating="0">
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+    </div>
+</div>
+<div class="movie-card">
+  <img src="https://via.placeholder.com/150x200?text=My+Spy" alt="My Spy">
+  <div class="movie-title">My Spy</div>
+  <div class="rating">
+    <span>&#9733;</span>
+    <span>&#9733;</span>
+    <span>&#9733;</span>
+    <span>&#9733;</span>
+    <span>&#9733;</span>
+  </div>
+</div>       
